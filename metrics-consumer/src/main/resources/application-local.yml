@@ -1,0 +1,33 @@
+spring:
+  config:
+    profiles:
+      active: local
+  mvc:
+    servlet:
+      path: /api
+  application:
+    name: metrics-consumer
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: group_id
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  # Swagger documentation
+  springdoc:
+    api-docs:
+      path: /docs
+    swagger-ui:
+      doc-expansion: none
+  datasource:
+    url: jdbc:postgresql://localhost:5432/metricsdb
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8081

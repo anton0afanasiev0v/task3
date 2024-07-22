@@ -1,0 +1,32 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+  spring:
+    profiles:
+      active: dev
+  mvc:
+    servlet:
+      path: /api
+  application:
+    name: metrics-consumer
+    kafka:
+      consumer:
+        bootstrap-servers: kafka:9092
+        group-id: group_id
+  #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+  #      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  datasource:
+    url: jdbc:postgresql://postgresql:5432/metricsdb
+    username: user
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+  # Swagger documentation
+  springdoc:
+    api-docs:
+      path: /docs
+    swagger-ui:
+      doc-expansion: none
